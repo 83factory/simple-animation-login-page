@@ -1,0 +1,235 @@
+body {
+    --color-scheme : 'light';
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000;
+    
+}
+
+section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    background-image: url(./images/bg-light.jpg);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 16px 0;
+    font-size: 11px;
+    color: #fff;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    font-size: 14px;
+    vertical-align: center;
+}
+
+h3 {
+    margin: 0;
+}
+
+#mode-control {
+    display: none;
+}
+
+.mode-container span {
+    width: 60px;
+    height: 30px;
+    display: inline-block;
+    background-color: #000;
+}
+
+.login-container {
+    display: inline-block;
+    backdrop-filter: blur(16px);
+    background-color: rgba(255,255,255,0.4);
+    padding: 2em;
+    border-radius: 16px;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    min-width: 260px;
+    gap: 12px;
+    transition: all .3s ease-in-out;
+    animation: fade-in-with-slide-to-top 1s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 16px 32px 0 rgba(0,0,0,0.2), inset 0 0 2px 0 rgba(255,255,255,0.5);
+    overflow: hidden;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    background: #000;
+    -webkit-mask: url(./images/logo.svg) no-repeat center;
+    mask-image: url(./images/logo.svg);
+    transition: background-color .3s ease-in-out;
+    
+}
+
+input {
+    background: none;
+    height: 40px;
+    font-size: 0.75rem;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: #000;
+    font-size: 14px;
+    transition: all .3s ease-in-out;
+}
+
+input::placeholder {
+    color: rgba(0,0,0,0.3);
+}
+
+input:hover:not(:placeholder-shown),
+input:not(:placeholder-shown) {
+    background-color: rgba(255,255,255,0.4);
+}
+
+input:hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+input:focus {
+    background-color: rgba(255,255,255,0.4);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgba(0,0,0,0.8);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+@keyframes slide-left-to-right {
+    0% {
+        background-position: 0 ;
+    }
+    
+    50% {
+        background-position: 100% ;
+    }
+    100% {
+        background-position: 0% ;
+    }
+}
+
+@keyframes slide-bottom-to-top {
+    0% {
+        background-position: center 0;
+    }
+    
+    50% {
+        background-position: center 100%;
+    }
+    100% {
+        background-position: center 0;
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-with-slide-to-top {
+    0% {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (orientation:portrait) {
+    section {
+        background-size: auto 100%;
+        animation: slide-left-to-right 200s infinite ease-out;
+    }
+}
+@media screen and (orientation:landscape) {
+    section {
+        background-size: auto 200%;
+        animation:  slide-bottom-to-top 200s infinite ease-out;
+
+    }
+}
+
+/**
+Dark Mode 
+*/
+
+@media (prefers-color-scheme: dark) {
+    section {
+        background-image: url(./images/bg-dark.jpg);
+    }
+    .login-container {
+        background-color: rgba(0,0,0,0.6);
+    }
+    .login-container .logo {
+        background-color: #fff;
+    }
+    .login-container h3 {
+        color: #ddd;
+    }
+    .login-container button {
+        background-color: #fff;
+        color: #000;
+    }
+
+    .login-container input {
+        background: none;
+        height: 40px;
+        font-size: 0.75rem;
+        padding: 0 0.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #fff;
+        font-size: 14px;
+        transition: all .3s ease-in-out;
+    }
+    
+    .login-container input::placeholder {
+        color: rgba(255,255,255,0.3);
+    }
+    
+    .login-container input:hover:not(:placeholder-shown),
+    .login-container input:not(:placeholder-shown) {
+        background-color: rgba(255,255,255,0.2);
+    }
+    
+    .login-container input:hover {
+        background-color: rgba(255,255,255,0.2);
+    }
+    .login-container input:focus {
+        background-color: rgba(255,255,255,0.2);
+        outline: none;
+    }
+
+}
+
